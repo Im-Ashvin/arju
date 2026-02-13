@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Valentine Gift for ARYA 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+  overflow: hidden;
+  background: linear-gradient(135deg, #ffe6ee, #fff5f8, #ffeaf3);
+}
+
+/* GIFT */
+.gift {
+  font-size: 90px;
+  cursor: pointer;
+  animation: bounce 1.8s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* CARD */
+.card {
+  display: none;
+  background: white;
+  padding: 35px 26px;
+  border-radius: 28px;
+  text-align: center;
+  max-width: 380px;
+  width: 92%;
+  box-shadow: 0 25px 60px rgba(255,105,150,0.25);
+  animation: pop 0.9s ease, breathe 4s ease-in-out infinite;
+}
+
+@keyframes pop {
+  from { transform: scale(0.92); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes breathe {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.015); }
+}
+
+/* PHOTO (YOUR IMAGE) */
+img {
+  width: 170px;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 20px;
+  margin-bottom: 18px;
+  border: 4px solid #ff4d88;
+  box-shadow: 0 12px 30px rgba(255,0,90,0.3);
+}
+
+/* TITLE */
+h1 {
+  font-size: 28px;
+  color: #ff2e75;
+  margin-bottom: 5px;
+}
+
+/* NAME */
+.name {
+  font-weight: 700;
+  font-size: 20px;
+  color: #ff2e75;
+  margin: 10px 0;
+}
+
+/* MESSAGE */
+p {
+  font-size: 16px;
+  color: #444;
+  line-height: 1.8;
+}
+
+/* SWEET TEXT */
+.sweet {
+  font-size: 18px;
+  color: #ff2e75;
+  font-weight: 600;
+  margin-top: 12px;
+}
+
+/* FROM */
+.from {
+  margin-top: 18px;
+  color: #ff2e75;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+/* FLOATING HEARTS */
+.float {
+  position: absolute;
+  font-size: 20px;
+  opacity: 0.8;
+  pointer-events: none;
+  animation-name: floatUp;
+  animation-timing-function: linear;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(110vh) translateX(0);
+    opacity: 0;
+  }
+  25% { opacity: 0.9; }
+  to {
+    transform: translateY(-10vh) translateX(40px);
+    opacity: 0;
+  }
+}
+
+/* MUSIC BUTTON */
+.music {
+  margin-top: 14px;
+  padding: 9px 20px;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #ff2e75, #ff6fa3);
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 6px 18px rgba(255,0,90,0.35);
+}
+</style>
+</head>
+
+<body>
+
+<!-- Gift Box -->
+<div class="gift" onclick="openGift()">💝</div>
+
+<!-- Valentine Card -->
+<div class="card" id="card">
+
+  <!-- ADD YOUR PHOTO HERE -->
+  <img src="Arju.png" alt="Our Photo">
+
+  <h1>Happy Valentine’s Day 💖</h1>
+
+  <div class="name">My Sweetheart ARYA ❤️</div>
+
+  <p>
+    From the moment you came into my life,<br>
+    everything became more beautiful 💕<br><br>
+
+    Your smile is my favorite view 😊<br>
+    Your happiness is my biggest priority 🌸<br>
+    And your love is my greatest gift 💝
+  </p>
+
+  <p>
+    Every memory with you is special,<br>
+    Every second with you feels magical ✨<br>
+    I’m so lucky to have you in my life 💗
+  </p>
+
+  <div class="sweet">
+    You are my peace, my happiness,<br>
+    and my forever Valentine 💖🌹
+  </div>
+
+  <button class="music" onclick="playMusic()">▶ Play Romantic Music</button>
+
+  <div class="from">– Made with Love ❤️</div>
+</div>
+
+<audio id="bgm" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3">
+</audio>
+
+<script>
+function openGift() {
+  document.querySelector('.gift').style.display = 'none';
+  document.getElementById('card').style.display = 'block';
+}
+
+function playMusic() {
+  document.getElementById('bgm').play();
+}
+
+/* Floating Hearts Animation */
+setInterval(() => {
+  const symbols = ["💖","❤️","💕","🌹","✨"];
+  for (let i = 0; i < 4; i++) {
+    const el = document.createElement("div");
+    el.className = "float";
+    el.innerHTML = symbols[Math.floor(Math.random()*symbols.length)];
+
+    el.style.left = Math.random() * 100 + "vw";
+    el.style.fontSize = (18 + Math.random() * 12) + "px";
+    el.style.animationDuration = (8 + Math.random() * 6) + "s";
+
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 14000);
+  }
+}, 2000);
+</script>
+
+</body>
+</html>
