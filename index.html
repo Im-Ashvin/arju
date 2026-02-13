@@ -35,10 +35,10 @@ body {
 .card {
   display: none;
   background: white;
-  padding: 35px 26px;
+  padding: 35px 28px;
   border-radius: 28px;
   text-align: center;
-  max-width: 380px;
+  max-width: 420px;
   width: 92%;
   box-shadow: 0 25px 60px rgba(255,105,150,0.25);
   animation: pop 0.9s ease, breathe 4s ease-in-out infinite;
@@ -54,7 +54,7 @@ body {
   50% { transform: scale(1.015); }
 }
 
-/* PHOTO (YOUR IMAGE) */
+/* PHOTO */
 img {
   width: 170px;
   height: 170px;
@@ -69,38 +69,15 @@ img {
 h1 {
   font-size: 28px;
   color: #ff2e75;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
-/* NAME */
-.name {
-  font-weight: 700;
-  font-size: 20px;
-  color: #ff2e75;
-  margin: 10px 0;
-}
-
-/* MESSAGE */
-p {
-  font-size: 16px;
+/* LOVE LETTER TEXT */
+.message {
+  font-size: 16.5px;
   color: #444;
-  line-height: 1.8;
-}
-
-/* SWEET TEXT */
-.sweet {
-  font-size: 18px;
-  color: #ff2e75;
-  font-weight: 600;
-  margin-top: 12px;
-}
-
-/* FROM */
-.from {
-  margin-top: 18px;
-  color: #ff2e75;
-  font-weight: 600;
-  font-size: 15px;
+  line-height: 1.9;
+  text-align: center;
 }
 
 /* FLOATING HEARTS */
@@ -127,8 +104,8 @@ p {
 
 /* MUSIC BUTTON */
 .music {
-  margin-top: 14px;
-  padding: 9px 20px;
+  margin-top: 18px;
+  padding: 10px 22px;
   border: none;
   border-radius: 25px;
   background: linear-gradient(135deg, #ff2e75, #ff6fa3);
@@ -136,6 +113,12 @@ p {
   cursor: pointer;
   font-weight: 600;
   box-shadow: 0 6px 18px rgba(255,0,90,0.35);
+}
+
+.from {
+  margin-top: 18px;
+  color: #ff2e75;
+  font-weight: 600;
 }
 </style>
 </head>
@@ -148,50 +131,53 @@ p {
 <!-- Valentine Card -->
 <div class="card" id="card">
 
-  <!-- ADD YOUR PHOTO HERE -->
-  <img src="arju.png" alt="Our Photo">
+  <!-- Photo -->
+  <img src="./arju.png" alt="Our Photo">
 
-  <h1>Happy Valentine’s Day 💖</h1>
+  <h1>Happy Valentine’s Day, my love ❤️</h1>
 
-  <div class="name">My Sweetheart ARYA ❤️</div>
-
-  <p>
-    From the moment you came into my life,<br>
-    everything became more beautiful 💕<br><br>
-
-    Your smile is my favorite view 😊<br>
-    Your happiness is my biggest priority 🌸<br>
-    And your love is my greatest gift 💝
-  </p>
-
-  <p>
-    Every memory with you is special,<br>
-    Every second with you feels magical ✨<br>
-    I’m so lucky to have you in my life 💗
-  </p>
-
-  <div class="sweet">
-    You are my peace, my happiness,<br>
-    and my forever Valentine 💖🌹
+  <div class="message">
+    Our first Valentine’s together… honestly, it feels like a beautiful dream I never want to wake up from.
+    You came into my life so quietly, but now you mean everything to me.
+    Every smile of yours, every little moment we share, stays in my heart longer than you’ll ever know.
+    <br><br>
+    You’re not just someone I love… you’re my peace, my happiness, and the reason my days feel brighter.
+    If life gives me many more Valentine’s Days, I only want them with you.
+    <br><br>
+    Thank you for loving me kunjiyeee..., for understanding me, and for making my world feel complete.
+    I promise to love you a little more every single day. ❤️
   </div>
 
-  <button class="music" onclick="playMusic()">▶ Play Romantic Music</button>
+  <button class="music" onclick="toggleMusic()">🎵 Play / Pause Music</button>
 
   <div class="from">– Made with Love ❤️</div>
 </div>
 
-<audio id="bgm" loop>
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3">
+<!-- YOUR OWN SONG (LOCAL FILE) -->
+<audio id="bgm" loop preload="auto">
+  <source src="./song.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
 </audio>
 
 <script>
+const music = document.getElementById('bgm');
+
 function openGift() {
   document.querySelector('.gift').style.display = 'none';
   document.getElementById('card').style.display = 'block';
+  
+  // Auto play music when gift opens (romantic effect)
+  music.play().catch(() => {
+    console.log("Autoplay blocked until user interaction");
+  });
 }
 
-function playMusic() {
-  document.getElementById('bgm').play();
+function toggleMusic() {
+  if (music.paused) {
+    music.play();
+  } else {
+    music.pause();
+  }
 }
 
 /* Floating Hearts Animation */
